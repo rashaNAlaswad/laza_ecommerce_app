@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/helper/navigation_extensions.dart';
 import '../../core/constants/app_assets.dart';
+import '../../core/helper/spacing.dart';
 import '../../core/router/routes.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
@@ -59,7 +60,6 @@ class WelcomeButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 20,
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -73,6 +73,7 @@ class WelcomeButtons extends StatelessWidget {
             context.pushNamed(Routes.login);
           },
         ),
+        verticalSpace(20),
         AppElevatedButton(
           buttonText: 'Signin',
           backgroundColor: AppColors.lightGray,
