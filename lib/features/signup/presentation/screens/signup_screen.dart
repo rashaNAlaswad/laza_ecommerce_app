@@ -20,7 +20,7 @@ class SignupScreen extends StatelessWidget {
           onPressed: () {
             context.pop();
           },
-          icon: SvgPicture.asset(AppIcons.backArrow, width: 24.w, height: 24.h),
+          icon: SvgPicture.asset(AppIcons.backArrow),
         ),
       ),
       body: Column(
