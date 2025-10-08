@@ -1,6 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../features/login/data/data_sources/login_remote_data_source.dart';
+import '../../features/login/data/repositories/login_repository_impl.dart';
+import '../../features/login/domain/repositories/login_repository.dart';
+import '../../features/login/presentation/cubit/login_cubit.dart';
 import '../../features/signup/data/data_sources/signup_remote_data_source.dart';
 import '../../features/signup/data/repositories/signup_repository_impl.dart';
 import '../../features/signup/domain/repositories/signup_repository.dart';
@@ -24,4 +28,13 @@ setupGetIt() {
   getIt.registerFactory<SignupCubit>(
     () => SignupCubit(getIt<SignupRepository>()),
   );
+
+  // Login feature
+  getIt.registerLazySingleton<LoginRemoteDataSource>(
+    () => LoginRemoteDataSource(getIt<ApiService>()),
+  );
+  getIt.registerLazySingleton<LoginRepository>(
+    () => LoginRepositoryImpl(getIt<LoginRemoteDataSource>()),
+  );
+  getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginRepository>()));
 }
