@@ -14,31 +14,24 @@ class SignupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(),
-      body: Column(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-              child: SingleChildScrollView(
-                child: Column(
-                  spacing: 40,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Sign Up',
-                      style: AppTextStyles.font24blackSemiBold,
-                      textAlign: TextAlign.center,
-                    ),
-                    SignupForm(),
-                    SignupBlocListener(),
-                  ],
-                ),
-              ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text(
+              'Sign Up',
+              style: AppTextStyles.font24blackSemiBold,
+              textAlign: TextAlign.center,
             ),
-          ),
-          const SignupButton(),
-        ],
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+              child: SignupForm(),
+            ),
+            SignupBlocListener(),
+          ],
+        ),
       ),
+
+      bottomNavigationBar: const SignupButton(),
     );
   }
 }
