@@ -12,6 +12,10 @@ import '../../features/signup/presentation/cubit/signup_cubit.dart';
 import '../../features/verify_email/data/data_sources/verify_email_remote_data_source.dart';
 import '../../features/verify_email/data/repositories/verify_email_repository_impl.dart';
 import '../../features/verify_email/domain/repositories/verify_email_repository.dart';
+import '../../features/home/data/data_sources/categories_remote_data_source.dart';
+import '../../features/home/data/repositories/categories_repository_impl.dart';
+import '../../features/home/domain/repositories/categories_repository.dart';
+import '../../features/home/presentation/cubit/categories_cubit.dart';
 import '../networking/api_service.dart';
 import '../networking/dio_factory.dart';
 
@@ -47,5 +51,16 @@ setupGetIt() {
   );
   getIt.registerLazySingleton<VerifyEmailRepository>(
     () => VerifyEmailRepositoryImpl(getIt<VerifyEmailRemoteDataSource>()),
+  );
+
+  // Categories feature
+  getIt.registerLazySingleton<CategoriesRemoteDataSource>(
+    () => CategoriesRemoteDataSource(getIt<ApiService>()),
+  );
+  getIt.registerLazySingleton<CategoriesRepository>(
+    () => CategoriesRepositoryImpl(getIt<CategoriesRemoteDataSource>()),
+  );
+  getIt.registerFactory<CategoriesCubit>(
+    () => CategoriesCubit(getIt<CategoriesRepository>()),
   );
 }
