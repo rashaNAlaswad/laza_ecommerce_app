@@ -46,7 +46,7 @@ class DioFactory {
 
   static void clearAuthorizationHeader() {
     if (dio != null) {
-      dio!.options.headers = {'Accept': 'application/json'};
+      dio?.options.headers.remove('Authorization');
     }
   }
 }

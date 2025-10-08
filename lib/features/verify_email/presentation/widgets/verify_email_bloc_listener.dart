@@ -24,7 +24,7 @@ class VerifyEmailBlocListener extends StatelessWidget {
         } else if (state is VerifyEmailSuccess) {
           context.pop();
           context.pushNamedAndRemoveUntil(
-            Routes.home,
+            Routes.login,
             predicate: (route) => false,
           );
         } else if (state is VerifyEmailFailure) {
