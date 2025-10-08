@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
+import '../../features/home/data/models/category_response.dart';
 import '../../features/login/data/models/login_request_body.dart';
 import '../../features/login/data/models/login_response.dart';
 import '../../features/signup/data/models/signup_request_body.dart';
@@ -28,4 +29,7 @@ abstract class ApiService {
 
   @POST(ApiUrls.resendOtp)
   Future<void> resendOtp(@Body() ResendOtpRequestBody resendOtpRequestBody);
+
+  @GET(ApiUrls.categories)
+  Future<CategoryResponse> getCategories();
 }
