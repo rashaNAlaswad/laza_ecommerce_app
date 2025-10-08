@@ -90,11 +90,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<void> resendOtp(String email) async {
+  Future<void> resendOtp(ResendOtpRequestBody resendOtpRequestBody) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'email': email};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(resendOtpRequestBody.toJson());
     final _options = _setStreamType<void>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(

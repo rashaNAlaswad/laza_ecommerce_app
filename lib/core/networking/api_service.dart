@@ -5,6 +5,7 @@ import 'package:retrofit/http.dart';
 import '../../features/login/data/models/login_request_body.dart';
 import '../../features/login/data/models/login_response.dart';
 import '../../features/signup/data/models/signup_request_body.dart';
+import '../../features/verify_email/data/models/resend_otp_request_body.dart';
 import '../../features/verify_email/data/models/verify_email_request_body.dart';
 import 'api_urls.dart';
 
@@ -26,5 +27,5 @@ abstract class ApiService {
   );
 
   @POST(ApiUrls.resendOtp)
-  Future<void> resendOtp(@Body() String email);
+  Future<void> resendOtp(@Body() ResendOtpRequestBody resendOtpRequestBody);
 }
