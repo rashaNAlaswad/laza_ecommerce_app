@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:laza_ecommerce_app/core/router/routes.dart';
 
 import '../../../../core/helper/navigation_extensions.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -26,7 +27,7 @@ class LoginBlocListener extends StatelessWidget {
           );
         } else if (state is LoginSuccess) {
           context.pop();
-          // TODO: Navigate to home screen
+          context.pushNamed(Routes.home);
         } else if (state is LoginFailure) {
           context.pop();
           Utils.setupErrorDialog(context, state.error);
