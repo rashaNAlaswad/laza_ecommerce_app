@@ -25,20 +25,20 @@ class SignupBlocListener extends StatelessWidget {
               child: CircularProgressIndicator(color: AppColors.purplePrimary),
             ),
           );
-        }
-        else if (state is SignupSuccess) {
+        } else if (state is SignupSuccess) {
           context.pop();
-          context.pushNamedAndRemoveUntil(
-            Routes.login,
-            predicate: (route) => false,
-          );
-        }
-        else if (state is SignupFailure) {
+          navigateToVerifyEmail(context);
+        } else if (state is SignupFailure) {
           context.pop();
           Utils.setupErrorDialog(context, state.error);
         }
       },
       child: const SizedBox.shrink(),
     );
+  }
+
+  void navigateToVerifyEmail(BuildContext context) {
+    final email = context.read<SignupCubit>().emailController.text.trim();
+    context.pushNamed(Routes.verifyEmail, arguments: email);
   }
 }
