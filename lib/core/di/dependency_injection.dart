@@ -9,6 +9,9 @@ import '../../features/signup/data/data_sources/signup_remote_data_source.dart';
 import '../../features/signup/data/repositories/signup_repository_impl.dart';
 import '../../features/signup/domain/repositories/signup_repository.dart';
 import '../../features/signup/presentation/cubit/signup_cubit.dart';
+import '../../features/verify_email/data/data_sources/verify_email_remote_data_source.dart';
+import '../../features/verify_email/data/repositories/verify_email_repository_impl.dart';
+import '../../features/verify_email/domain/repositories/verify_email_repository.dart';
 import '../networking/api_service.dart';
 import '../networking/dio_factory.dart';
 
@@ -37,4 +40,12 @@ setupGetIt() {
     () => LoginRepositoryImpl(getIt<LoginRemoteDataSource>()),
   );
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginRepository>()));
+
+  // Verify Email feature
+  getIt.registerLazySingleton<VerifyEmailRemoteDataSource>(
+    () => VerifyEmailRemoteDataSource(getIt<ApiService>()),
+  );
+  getIt.registerLazySingleton<VerifyEmailRepository>(
+    () => VerifyEmailRepositoryImpl(getIt<VerifyEmailRemoteDataSource>()),
+  );
 }
