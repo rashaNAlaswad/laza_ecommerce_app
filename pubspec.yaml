@@ -37,8 +37,8 @@ dependencies:
   # Dependency Injection
   get_it: ^8.2.0
 
-  # Shimmer effect
-  shimmer: ^3.0.0
+  # Skeletonizer for loading states
+  skeletonizer: ^2.1.0+1
 
   # For caching network images
   cached_network_image: ^3.4.1

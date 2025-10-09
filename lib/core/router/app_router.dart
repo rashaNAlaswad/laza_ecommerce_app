@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../features/login/presentation/screens/login_screen.dart';
 import '../../../features/signup/presentation/screens/signup_screen.dart';
 import '../../../features/welcome/welcome_screen.dart';
+import '../../features/home/presentation/cubit/home_cubit.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/verify_email/presentation/screens/verify_email_screen.dart';
 import '../../features/login/presentation/cubit/login_cubit.dart';
@@ -40,7 +41,12 @@ class AppRouter {
           ),
         );
       case Routes.home:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<HomeCubit>()..loadHomeData(),
+            child: const HomeScreen(),
+          ),
+        );
     }
     return null;
   }
