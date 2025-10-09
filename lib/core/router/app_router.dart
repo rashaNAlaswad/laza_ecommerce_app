@@ -6,6 +6,8 @@ import '../../../features/signup/presentation/screens/signup_screen.dart';
 import '../../../features/welcome/welcome_screen.dart';
 import '../../features/home/presentation/cubit/home_cubit.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
+import '../../features/product_detailes/presentation/cubit/product_detailes_cubit.dart';
+import '../../features/product_detailes/presentation/screens/product_detailes_screen.dart';
 import '../../features/verify_email/presentation/screens/verify_email_screen.dart';
 import '../../features/login/presentation/cubit/login_cubit.dart';
 import '../../features/signup/presentation/cubit/signup_cubit.dart';
@@ -45,6 +47,15 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => getIt<HomeCubit>()..loadHomeData(),
             child: const HomeScreen(),
+          ),
+        );
+      case Routes.productDetailes:
+        final productId = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                getIt<ProductDetailesCubit>()..loadProductDetailes(productId),
+            child: ProductDetailesScreen(productId: productId),
           ),
         );
     }
