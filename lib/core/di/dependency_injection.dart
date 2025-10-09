@@ -15,7 +15,9 @@ import '../../features/verify_email/domain/repositories/verify_email_repository.
 import '../../features/home/data/data_sources/categories_remote_data_source.dart';
 import '../../features/home/data/repositories/categories_repository_impl.dart';
 import '../../features/home/domain/repositories/categories_repository.dart';
-import '../../features/home/presentation/cubit/categories_cubit.dart';
+import '../../features/home/data/data_sources/products_remote_data_source.dart';
+import '../../features/home/data/repositories/products_repository_impl.dart';
+import '../../features/home/domain/repositories/products_repository.dart';
 import '../networking/api_service.dart';
 import '../networking/dio_factory.dart';
 
@@ -53,14 +55,19 @@ setupGetIt() {
     () => VerifyEmailRepositoryImpl(getIt<VerifyEmailRemoteDataSource>()),
   );
 
-  // Categories feature
+  // Home feature - Categories
   getIt.registerLazySingleton<CategoriesRemoteDataSource>(
     () => CategoriesRemoteDataSource(getIt<ApiService>()),
   );
   getIt.registerLazySingleton<CategoriesRepository>(
     () => CategoriesRepositoryImpl(getIt<CategoriesRemoteDataSource>()),
   );
-  getIt.registerFactory<CategoriesCubit>(
-    () => CategoriesCubit(getIt<CategoriesRepository>()),
+
+  // Home feature - Products
+  getIt.registerLazySingleton<ProductsRemoteDataSource>(
+    () => ProductsRemoteDataSource(getIt<ApiService>()),
+  );
+  getIt.registerLazySingleton<ProductsRepository>(
+    () => ProductsRepositoryImpl(getIt<ProductsRemoteDataSource>()),
   );
 }
