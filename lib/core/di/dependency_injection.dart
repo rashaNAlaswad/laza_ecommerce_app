@@ -19,6 +19,10 @@ import '../../features/home/data/data_sources/products_remote_data_source.dart';
 import '../../features/home/data/repositories/products_repository_impl.dart';
 import '../../features/home/domain/repositories/products_repository.dart';
 import '../../features/home/presentation/cubit/home_cubit.dart';
+import '../../features/product_detailes/data/data_sources/prodect_detailes_remote_data_source.dart';
+import '../../features/product_detailes/data/repositories/product_detailes_repository_impl.dart';
+import '../../features/product_detailes/domain/repositories/prodect_detailes_repository.dart';
+import '../../features/product_detailes/presentation/cubit/product_detailes_cubit.dart';
 import '../networking/api_service.dart';
 import '../networking/dio_factory.dart';
 
@@ -73,5 +77,17 @@ setupGetIt() {
   );
   getIt.registerFactory<HomeCubit>(
     () => HomeCubit(getIt<CategoriesRepository>(), getIt<ProductsRepository>()),
+  );
+
+  // Product Details feature
+  getIt.registerLazySingleton<ProdectDetailesRemoteDataSource>(
+    () => ProdectDetailesRemoteDataSource(getIt<ApiService>()),
+  );
+  getIt.registerLazySingleton<ProdectDetailesRepository>(
+    () =>
+        ProductDetailesRepositoryImpl(getIt<ProdectDetailesRemoteDataSource>()),
+  );
+  getIt.registerFactory<ProductDetailesCubit>(
+    () => ProductDetailesCubit(getIt<ProdectDetailesRepository>()),
   );
 }
