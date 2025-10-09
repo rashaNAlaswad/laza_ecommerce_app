@@ -14,61 +14,80 @@ class ProductDetailsInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            productDetails.categories.join(", "),
-            style: AppTextStyles.font15grayRegular,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
+          _buildCategorySection(),
           verticalSpace(8),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Text(
-                  productDetails.name,
-                  style: AppTextStyles.font22blackSemiBold,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              Text(
-                '\$${productDetails.price.toStringAsFixed(2)}',
-                style: AppTextStyles.font22blackSemiBold,
-              ),
-            ],
-          ),
-          verticalSpace(10),
-          Text(
-            'Description',
-            style: AppTextStyles.font22blackSemiBold.copyWith(fontSize: 17),
-          ),
-          verticalSpace(10),
-          Text(
-            productDetails.description,
-            style: AppTextStyles.font15grayRegular,
-          ),
-
-          verticalSpace(10),
-          Wrap(
-            spacing: 10,
-            runSpacing: 10,
-            children: [
-              _buildInfoChip('Stock: ${productDetails.stock}'),
-              _buildInfoChip('Weight: ${productDetails.weight}kg'),
-              _buildInfoChip('Color: ${productDetails.color}'),
-              _buildInfoChip(
-                'Rating: ${productDetails.rating.toStringAsFixed(1)}',
-              ),
-            ],
-          ),
+          _buildNameAndPriceSection(),
+          verticalSpace(15),
+          _buildDescriptionSection(),
+          verticalSpace(15),
+          _buildInfoChipsSection(),
         ],
       ),
+    );
+  }
+
+  Widget _buildCategorySection() {
+    return Text(
+      productDetails.categories.join(", "),
+      style: AppTextStyles.font15grayRegular,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+    );
+  }
+
+  Widget _buildNameAndPriceSection() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: Text(
+            productDetails.name,
+            style: AppTextStyles.font22blackSemiBold,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        horizontalSpace(10),
+        Text(
+          '\$${productDetails.price.toStringAsFixed(2)}',
+          style: AppTextStyles.font22blackSemiBold,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDescriptionSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Description',
+          style: AppTextStyles.font17whiteMedium.copyWith(color: Colors.black),
+        ),
+        verticalSpace(10),
+        Text(
+          productDetails.description,
+          style: AppTextStyles.font15grayRegular,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildInfoChipsSection() {
+    return Wrap(
+      spacing: 10.w,
+      runSpacing: 10.h,
+      children: [
+        _buildInfoChip('Stock: ${productDetails.stock}'),
+        _buildInfoChip('Weight: ${productDetails.weight}kg'),
+        _buildInfoChip('Color: ${productDetails.color}'),
+        _buildInfoChip('Rating:⭐ ${productDetails.rating.toStringAsFixed(1)} '),
+      ],
     );
   }
 
