@@ -6,6 +6,7 @@ import '../../features/home/data/models/categories_response.dart';
 import '../../features/home/data/models/prodect_response.dart';
 import '../../features/login/data/models/login_request_body.dart';
 import '../../features/login/data/models/login_response.dart';
+import '../../features/product_detailes/data/models/prodect_detailes_response.dart';
 import '../../features/signup/data/models/signup_request_body.dart';
 import '../../features/verify_email/data/models/resend_otp_request_body.dart';
 import '../../features/verify_email/data/models/verify_email_request_body.dart';
@@ -36,4 +37,7 @@ abstract class ApiService {
 
   @GET(ApiUrls.products)
   Future<ProductsResponse> getAllProducts();
+
+  @GET("${ApiUrls.products}/{id}")
+  Future<ProductDetailesResponse> getProductById(@Path("id") String id);
 }
