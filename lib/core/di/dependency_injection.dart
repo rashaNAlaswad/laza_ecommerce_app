@@ -18,6 +18,7 @@ import '../../features/home/domain/repositories/categories_repository.dart';
 import '../../features/home/data/data_sources/products_remote_data_source.dart';
 import '../../features/home/data/repositories/products_repository_impl.dart';
 import '../../features/home/domain/repositories/products_repository.dart';
+import '../../features/home/presentation/cubit/home_cubit.dart';
 import '../networking/api_service.dart';
 import '../networking/dio_factory.dart';
 
@@ -69,5 +70,8 @@ setupGetIt() {
   );
   getIt.registerLazySingleton<ProductsRepository>(
     () => ProductsRepositoryImpl(getIt<ProductsRemoteDataSource>()),
+  );
+  getIt.registerFactory<HomeCubit>(
+    () => HomeCubit(getIt<CategoriesRepository>(), getIt<ProductsRepository>()),
   );
 }
