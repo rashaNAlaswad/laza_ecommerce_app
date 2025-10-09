@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:laza_ecommerce_app/core/constants/app_assets.dart';
-import 'package:laza_ecommerce_app/core/helper/navigation_extensions.dart';
+import '../constants/app_assets.dart';
+import '../helper/navigation_extensions.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({super.key});

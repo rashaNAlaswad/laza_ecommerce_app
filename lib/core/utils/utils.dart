@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../helper/navigation_extensions.dart';
 import '../networking/api_error_model.dart';
 import '../theme/app_colors.dart';

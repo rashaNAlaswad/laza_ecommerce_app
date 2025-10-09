@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:laza_ecommerce_app/core/widgets/app_bar_widget.dart';
+import '../../../../core/widgets/app_bar_widget.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../widgets/signup_button.dart';
 

@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:laza_ecommerce_app/core/helper/spacing.dart';
-import 'package:laza_ecommerce_app/core/theme/app_font_weight.dart';
+import '../../../../core/helper/spacing.dart';
+import '../../../../core/theme/app_font_weight.dart';
 
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:laza_ecommerce_app/core/router/routes.dart';
+import '../../../../core/router/routes.dart';
 
 import '../../../../core/helper/navigation_extensions.dart';
 import '../../../../core/theme/app_colors.dart';
