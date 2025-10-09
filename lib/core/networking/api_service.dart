@@ -3,6 +3,7 @@ import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
 import '../../features/home/data/models/categories_response.dart';
+import '../../features/home/data/models/prodect_response.dart';
 import '../../features/login/data/models/login_request_body.dart';
 import '../../features/login/data/models/login_response.dart';
 import '../../features/signup/data/models/signup_request_body.dart';
@@ -32,4 +33,7 @@ abstract class ApiService {
 
   @GET(ApiUrls.categories)
   Future<CategoriesResponse> getCategories();
+
+  @GET(ApiUrls.products)
+  Future<ProductsResponse> getAllProducts();
 }
